@@ -27,7 +27,7 @@ export class PersonConstruct extends Construct {
     const createPersonFn = new lambdaNodejs.NodejsFunction(this, 'CreatePersonFunction', {
       functionName: `create-person-${props.stageName}`,
       entry: path.join(__dirname, '../../src/person/handler.ts'),
-      handler: 'handler',
+      handler: 'CreatePersonHandler',
       runtime: lambda.Runtime.NODEJS_24_X,
       timeout: Duration.seconds(10),
       memorySize: 256,

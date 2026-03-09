@@ -5,7 +5,7 @@ import { formatZodErrors } from '../shared/zod';
 
 const JSON_HEADERS = { 'Content-Type': 'application/json' };
 
-export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
+export async function CreatePersonHandler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   let body: unknown;
 
   try {

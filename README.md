@@ -35,10 +35,10 @@ The stack is stage-aware. Pass a `stageName` context value to deploy multiple en
 
 ```bash
 # Deploy to dev (default)
-npx cdk deploy -c stageName=dev
+npm run deploy:dev
 
 # Deploy to production
-npx cdk deploy -c stageName=prod
+npm run deploy:prod
 ```
 
 ## Useful commands

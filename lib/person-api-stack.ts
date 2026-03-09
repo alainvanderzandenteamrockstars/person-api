@@ -1,16 +1,37 @@
 import * as cdk from 'aws-cdk-lib/core';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import * as events from 'aws-cdk-lib/aws-events';
+import { PersonConstruct } from './person/person-construct';
+
+interface PersonApiStackProps extends cdk.StackProps {
+  stageName: string;
+}
 
 export class PersonApiStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, props: PersonApiStackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const eventBus = new events.EventBus(this, 'PersonEventBus', {
+      eventBusName: `person-event-bus-${props.stageName}`,
+    });
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'PersonApiQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const api = new apigateway.RestApi(this, 'PersonApi', {
+      restApiName: `person-api-${props.stageName}`,
+      deployOptions: {
+        stageName: props.stageName,
+        loggingLevel: apigateway.MethodLoggingLevel.ERROR,
+      },
+      defaultCorsPreflightOptions: {
+        allowOrigins: apigateway.Cors.ALL_ORIGINS,
+        allowMethods: ['POST', 'OPTIONS'],
+      },
+    });
+
+    new PersonConstruct(this, 'Person', {
+      stageName: props.stageName,
+      eventBus,
+      api,
+    });
   }
 }

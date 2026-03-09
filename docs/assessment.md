@@ -1,0 +1,7 @@
+The serverless application we would like you to create is a micro service that is part of micro service architecture. For the serverless application you can use AWS CDK (a technology we love and frequently use) or another serverless framework (serverless.js, SAM) if you are more familiar with it. The choice however is yours. The microservice you're going to build is the Person Service. The person service stores information about persons and allows users of its API to create new persons and list existing persons. For the assessment we will focus on the process of creating a new person.
+
+The microservice should expose a Rest API endpoint (/person) to create a new person. When a new person is created via this endpoint it should be saved to a database (preferably NoSQL). Firstly, its first name, last name, phone number, and address information should all be stored. Secondly, a person-created-event should be fired into the microservice landscape.
+
+The microservice should be easily deployable multiple times (for example once to a development environment and once to a production environment) and we expect that you use a serverless approach to ensure the microservice can scale on its own based on usage without having to manage infrastructure.
+
+It would be great if you can share the solution you created by sharing a repository (a day before the assessment talk). We are looking forward to discussing your ideas, solutions and design decisions!

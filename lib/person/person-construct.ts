@@ -34,11 +34,13 @@ export class PersonConstruct extends Construct {
       environment: {
         TABLE_NAME: table.tableName,
         EVENT_BUS_NAME: props.eventBus.eventBusName,
+        NODE_OPTIONS: '--enable-source-maps',
       },
       bundling: {
         externalModules: [],
         minify: true,
-        sourceMap: false,
+        sourceMap: true,
+        sourceMapMode: lambdaNodejs.SourceMapMode.INLINE,
       },
     });
 

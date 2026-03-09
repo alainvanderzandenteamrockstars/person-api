@@ -33,5 +33,9 @@ export class PersonApiStack extends cdk.Stack {
       eventBus,
       api,
     });
+
+    cdk.Tags.of(this).add('Project', 'person-api');
+    cdk.Tags.of(this).add('Stage', props.stageName);
+    cdk.Tags.of(this).add('ManagedBy', 'cdk');
   }
 }

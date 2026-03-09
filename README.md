@@ -1,6 +1,6 @@
 # Person API
 
-A serverless REST API built for the Tikkie assessment. The service manages person records and is built with **Node.js**, **TypeScript**, and **AWS CDK**.
+A serverless REST API built for the Tikkie [assessment](docs/assessment.md). The service manages person records and is built with **Node.js**, **TypeScript**, and **AWS CDK**.
 
 It exposes a `POST /person` endpoint that stores a new person in DynamoDB and fires a `PersonCreated` event onto an EventBridge event bus.
 

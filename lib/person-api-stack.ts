@@ -23,7 +23,8 @@ export class PersonApiStack extends cdk.Stack {
         loggingLevel: apigateway.MethodLoggingLevel.ERROR,
       },
       defaultCorsPreflightOptions: {
-        allowOrigins: apigateway.Cors.ALL_ORIGINS,
+        allowOrigins:
+          props.stageName === 'prod' ? ['https://www.tikkie.me/'] : ['http://localhost:3000'],
         allowMethods: ['POST', 'OPTIONS'],
       },
     });
